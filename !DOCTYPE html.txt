@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyWalk Weather</title> <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body class="bg-slate-950 flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+  <!-- Mobile Viewport Shell -->
+  <div class="w-full max-w-[420px] min-h-screen bg-[#0c131f] text-slate-100 flex flex-col shadow-2xl relative overflow-hidden">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-[#0c131f]/95 backdrop-blur-md px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+        </div>
+        <div>
+          <h1 class="text-base font-bold text-white tracking-tight">SkyWalk</h1>
+          <p id="header-subtitle" class="text-[10px] tracking-wider uppercase font-semibold text-emerald-400">TODAY</p>
+        </div>
+      </div>
+      <div class="w-9 h-9 rounded-full overflow-hidden border border-emerald-500/30">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover">
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 pb-28">
+      
+      <!-- SCREEN 1: TODAY -->
+      <div id="tab-today" class="tab-content active px-5 pt-4 space-y-4">
+        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-semibold text-white uppercase tracking-wide">Downtown Seattle</span>
+            <span>·</span>
+            <span>Updated 3m ago</span>
+          </div>
+          <button class="p-1 rounded-lg hover:bg-slate-800 transition-colors" title="Refresh data">
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </button>
+        </div>
+
+        <section class="bg-gradient-to-br from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-2xl p-6 shadow-sm">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold tracking-wide mb-3">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>GREAT FOR A WALK</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight leading-tight">Safe until 4:00 PM</h2>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+            Pleasant temperatures (68°F) and clear skies. Low risk of rain (5%) until late afternoon shower front.
+          </p>
+          <div class="mt-5 flex items-center gap-2.5">
+            <button class="flex-1 bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] text-slate-950 font-bold py-3.5 px-5 rounded-xl shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>Start Outdoor Walk</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Glanceable Metrics -->
+        <section class="grid grid-cols-3 gap-2.5">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3">
+            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase">
+              <span>Comfort</span>
+              <span class="text-xs">🌡️</span>
+            </div>
+            <div class="text-xl font-bold text-white mt-1">68°</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Feels 67°</div>
+          </div>
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3">
+            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase">
+              <span>Rain Risk</span>
+              <span class="text-xs">💧</span>
+            </div>
+            <div class="text-xl font-bold text-white mt-1">5%</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Dry conditions</div>
+          </div>
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3">
+            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase">
+              <span>Wind</span>
+              <span class="text-xs">💨</span>
+            </div>
+            <div class="text-xl font-bold text-white mt-1">7 <span class="text-xs font-normal">mph</span></div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Gentle breeze</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- SCREEN 2: TRIP STORM CHECKER -->
+      <div id="tab-trip" class="tab-content px-5 pt-4 space-y-4">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Telemetry Routing</span>
+            <span class="text-[10px] font-semibold text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> NEXRAD Live
+            </span>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">◎</div>
+              <div class="flex-1">
+                <p class="text-[10px] uppercase font-bold text-slate-500">From</p>
+                <p class="text-sm font-semibold text-white">Downtown Seattle</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs">📍</div>
+              <div class="flex-1">
+                <p class="text-[10px] uppercase font-bold text-slate-500">To Destination</p> <p class="text-sm font-semibold text-white">North Shore Park</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="bg-gradient-to-br from-amber-500/15 via-slate-900 to-slate-900 border border-amber-500/40 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 text-[11px] font-bold">⚠ CAUTION ON ROUTE</span>
+            <span class="text-xs text-slate-400 font-mono">CONFIDENCE 94%</span>
+          </div>
+          <h2 class="text-xl font-bold text-white leading-snug">Safe arrival likely, but rain front reaches destination by 3:45 PM.</h2>
+        </section>
+      </div>
+
+      <!-- SCREEN 3: SETTINGS -->
+      <div id="tab-settings" class="tab-content px-5 pt-4 space-y-5">
+        <section class="space-y-3">
+          <span class="font-bold text-slate-400 uppercase tracking-wider text-[11px] px-1">My Walk Thresholds</span>
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-semibold text-white">Max Wind Speed</span>
+              <span id="wind-val" class="text-sm font-bold text-slate-200">18 mph</span>
+            </div>
+            <input type="range" min="5" max="35" value="18" id="wind-slider" class="w-full accent-emerald-400 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+          </div>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- Unified Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 max-w-[420px] w-full bg-[#0c131f]/95 backdrop-blur-md border-t border-slate-800 px-6 py-2.5 flex justify-between items-center z-40">
+      <button onclick="switchTab('today')" id="nav-today" class="nav-btn flex flex-col items-center gap-1 text-emerald-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <span class="text-[10px] font-bold">TODAY</span>
+      </button>
+
+      <button onclick="switchTab('trip')" id="nav-trip" class="nav-btn flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+        <span class="text-[10px] font-semibold">TRIP</span>
+      </button>
+
+      <button onclick="switchTab('settings')" id="nav-settings" class="nav-btn flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+        <span class="text-[10px] font-semibold">SETTINGS</span>
+      </button>
+    </nav>
+  </div>
+
+  <script>
+    // Tab Switcher Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => {
+        el.classList.remove('text-emerald-400');
+        el.classList.add('text-slate-500');
+      });
+
+      document.getElementById('tab-' + tabId).classList.add('active');
+      document.getElementById('nav-' + tabId).classList.add('text-emerald-400');
+      document.getElementById('nav-' + tabId).classList.remove('text-slate-500');
+      document.getElementById('header-subtitle').innerText = tabId.toUpperCase();
+    }
+
+    // Interactive Slider Handler
+    const slider = document.getElementById('wind-slider');
+    const display = document.getElementById('wind-val');
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        display.innerText = e.target.value + ' mph';
+      });
+    }
+  </script>
+</body>
+</html>
